@@ -1,8 +1,8 @@
-# Fractals with 3D Programming
+# Fractals with three.js & Intro to Ray Marching
 
-## Author: Hwei-Shin Harriman
+![3D Sierpinski Gasket](/img/3dsierpinski.png)
 
-### Introduction
+## Introduction
 
 This project is a Starter repository, providing some structured material to
 learn about generating fractals in 3D programming. This repo assumes that you're
@@ -21,6 +21,17 @@ Additionally, there are resources for learning how to use raymarching to render
 fractals, which are listed below. It is recommended that you check out these
 resources after completing the provided exercises.
 
-### Raymarching Resources and Concepts
+## Resources
 
-### Raymarching Fractals Resources
+### Additional Raymarching Resources
+
+[Awesome Open Source Raymarching for THREE](https://awesomeopensource.com/project/nicoptere/raymarching-for-THREE)  
+[List of Signed Distance Estimators](https://iquilezles.org/www/articles/distfunctions/distfunctions.htm)
+
+### Fractals and Raymarching Resources
+
+[Distance Estimated 3D Fractals Part I](http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/)  
+[Distance Estimated 3D Fractals Part III: Folding Space](http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/)  
+[Github Repo with Collection of 2D and 3D fractals implemented in GLSL](https://github.com/pedrotrschneider/shader-fractals)  
+[Mandelbulb Background and Some Implementation](https://iquilezles.org/www/articles/mandelbulb/mandelbulb.htm)  
+[Distance Estimated 3D Fractals Part V: The Mandelbulb Different DE Approximations](http://blog.hvidtfeldts.net/index.php/2011/09/distance-estimated-3d-fractals-v-the-mandelbulb-different-de-approximations/)
