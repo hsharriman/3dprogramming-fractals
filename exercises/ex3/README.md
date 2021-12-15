@@ -37,5 +37,5 @@ gasket.
 ## Resources
 
 Though I did initially look through a lot of resources for this exercise, all
-the ones I found were more confusing than helpful, so I have elected to not list
-them here :)
+the ones I found were more confusing than helpful (mostly dealing with other
+tools, languages, or approaches), so I have elected not to list them here :)

@@ -34,7 +34,7 @@ vec3 getRay(vec3 origin, vec3 target, vec2 screenPos, float lensLength) {
 }
 
 /////////////////////////////////////////////////////////////////////////
-
+// https://github.com/nicoptere/raymarching-for-THREE/tree/master/glsl
 mat3 rotationMatrix3(vec3 axis, float angle)
 {
     axis = normalize(axis);
@@ -50,10 +50,8 @@ mat3 rotationMatrix3(vec3 axis, float angle)
 
 vec2 sphere( vec3 p, float radius )
 {
-    float d = length( p ) - radius;
-    return vec2(d,1);
+    // TODO: define your DE for a sphere here
 }
-
 
 const int steps = 80;
 
@@ -63,34 +61,9 @@ vec2 field( vec3 position )
     return sph;
 }
 
-/////////////////////////////////////////////////////////////////////////
-
-// the methods below this need the field function
-
-/////////////////////////////////////////////////////////////////////////
-
-
-//the actual raymarching from:
-//https://github.com/stackgl/glsl-raytrace/blob/master/index.glsl
-
 vec2 raymarching( vec3 rayOrigin, vec3 rayDir, float maxd, float precis ) {
 
-    float latest = precis * 2.0;
-    float dist   = 0.0;
-    float type   = -1.0;
-    vec2  res    = vec2(-1.0, -1.0);
-    for (int i = 0; i < steps; i++) {
-
-        if (latest < precis || dist > maxd) break;
-
-        vec2 result = field( rayOrigin + rayDir * dist );
-        latest = result.x;
-        type   = result.y;
-        dist  += latest;
-    }
-
-    if (dist < maxd) { res = vec2(dist, type); }
-    return res;
+    // TODO: implement your raymarching algorithm here
 }
 
 //https://github.com/stackgl/glsl-sdf-normal
@@ -113,45 +86,19 @@ vec3 calcNormal(vec3 pos) {
 
 
 void main() {
-
-
        vec3 color = vec3( 0.4, 0.8, 0.99 );    //blue
-       vec2  screenPos    = squareFrame( resolution );
-       float col = pow( max( 0., 1.- length( screenPos - vec2( 0.,.35 ) ) ), 1.5 );
-       gl_FragColor = vec4( vec3( col ), 1. );
-
+       vec2  screenPos = squareFrame( resolution );
 
        float cameraAngle   = 0.2;
        float cameraRadius = 20.;
        float lensLength   = 2.5;
-       float y = cameraRadius * .38 + ( cameraRadius * .32 * sin(cameraAngle) );
-       vec3  rayOrigin    = vec3( cameraRadius * sin(cameraAngle), y, cameraRadius * cos(cameraAngle));
-       vec3  rayTarget    = vec3(0, 0, 0);
-       vec3  rayDirection = getRay(rayOrigin, rayTarget, screenPos, lensLength);
-
-
-       float maxDist = 50.;
-       vec2 collision = raymarching( rayOrigin, rayDirection, maxDist, .01 );
-
-       if ( collision.x > -0.5)
-       {
-
-           //"world" position
-           vec3 pos = rayOrigin + rayDirection * collision.x;
-
-           //diffuse color
-           vec3 col = vec3(0.5569, 0.6235, 1.0);
-
-           //normal vector
-           vec3 nor = calcNormal( pos );
-
-           vec3 lig1 = normalize( vec3( 0.0, 5.0, -0.0) );
-           vec3 light1 = max( 0.0, dot( lig1, nor) ) * color;
-
-          //  float dep = ( ( collision.x + .5 ) / ( maxDist * .5 ) );
-           gl_FragColor = vec4( ( col + light1  ), 1. ); // GLSL variable fed to THREE.js
-
-       }
-
-
+       // TODO: FILL IN CODE HERE
+       // 0. initialize gl_FragColor as a vec4 color
+       // 1. express the ray's origin, target, and direction in terms of the camera parameters
+       // 2. run the raymarching algorithm with a max distance of 50.
+       // 3. if the collision from the ray marching algorithm is > 0.5, then
+       // 4. calculate the collision's position in the world frame, add lighting
+       // 5. and set the final fragment color by assigning to gl_FragColor 
+       // (gl_FragColor is a special variable accessed by THREE to render
+       // the scene)
 }
