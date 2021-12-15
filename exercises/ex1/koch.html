@@ -39,18 +39,74 @@
     <h1>Koch Snowflakes</h1>
   </body>
   <script>
+    // feel free to change these parameters
     let default_params = {
       sideLength: 150,
       iterations: 5,
       anti: false,
     };
 
-    var scene = new THREE.Scene();
-
-    var renderer = new THREE.WebGLRenderer();
+    // keep track of all points that the turtle visits
     let points = [];
 
+    const left = (vec, deg) => {
+      // TODO: FILL IN THIS FUNCTION
+      // rotate vec by deg degrees CCW
+      // hint: you might want to make use of THREE.Vector2.rotateAround()
+      // remember to clone vec before rotating!
+    };
+
+    const right = (vec, deg) => {
+      // TODO: FILL IN THIS FUNCTION
+      // rotate vec by deg degrees CW
+      // should be very similar to left()
+    };
+
+    const snowflake = (start, sideLen, iterations, anti) => {
+      // TODO: FILL IN THIS FUNCTION
+    };
+
+    const makeSnowflake = (params) => {
+      // make the line following the turtle blue
+      const material = new THREE.LineBasicMaterial({
+        color: 0x0000ff,
+      });
+
+      // initialize turtle at the origin
+      let firstPt = new THREE.Vector2(0, 0);
+
+      // if making antiflake, start turtle on other side of canvas
+      if (!params.anti) {
+        firstPt = new THREE.Vector2(0, 120);
+      }
+
+      // add first point
+      points.push(firstPt.clone());
+
+      // call recursive koch snowflake
+      snowflake(
+        firstPt,
+        new THREE.Vector2(params.sideLength, 0), // direction that turtle should start moving in
+        params.iterations,
+        params.anti
+      );
+
+      // create geometry from list of points
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+      // return one line based on points visited
+      return new THREE.Line(geometry, material);
+    };
+
+    // initialize snowflake
+    let flake = makeSnowflake(default_params);
+
+    // ---------------set up THREE and the camera, scene------------
+    var scene = new THREE.Scene();
+    var renderer = new THREE.WebGLRenderer();
     TW.mainInit(renderer, scene);
+
+    // setting up the camera's FOV
     let state = TW.cameraSetup(renderer, scene, {
       minx: 0,
       maxx: 150,
@@ -60,82 +116,8 @@
       maxz: 0,
     });
 
-    const left = (vec, deg) => {
-      const origin = new THREE.Vector2(0, 0);
-      return vec.clone().rotateAround(origin, (deg * Math.PI) / 180);
-    };
-
-    const right = (vec, deg) => {
-      const origin = new THREE.Vector2(0, 0);
-      return vec.clone().rotateAround(origin, (-deg * Math.PI) / 180);
-    };
-
-    const koch = (pt, moveTo, iterations) => {
-      if (iterations === 1) {
-        let newPt = moveTo.clone().add(pt).round();
-        points.push(newPt);
-        return newPt;
-      }
-      moveTo = moveTo.clone().divideScalar(3);
-      iterations--;
-      // move forwards
-      pt = koch(pt, moveTo, iterations);
-      // turn left 30 degrees and move forwards
-      moveTo = left(moveTo, 60);
-      pt = koch(pt, moveTo, iterations);
-      //turn right 60 degrees and move forwards
-      moveTo = right(moveTo, 120);
-      pt = koch(pt, moveTo, iterations);
-      // turn left 30 degrees and move forwards
-      moveTo = left(moveTo, 60);
-      pt = koch(pt, moveTo, iterations);
-      return pt;
-    };
-
-    const snowflake = (start, sideLen, iterations, anti) => {
-      let moveTo = sideLen;
-      let pt = start;
-      let sides = iterations <= 2 ? 3 : iterations; // make sure that the low-iterations are still closed polygons
-      for (let i = 0; i < sides; i++) {
-        pt = koch(pt, moveTo, iterations);
-        if (anti) {
-          moveTo = left(moveTo, 120);
-        } else {
-          moveTo = right(moveTo, 120);
-        }
-      }
-    };
-
-    const makeSnowflake = (params) => {
-      const material = new THREE.LineBasicMaterial({
-        color: 0x0000ff,
-      });
-
-      let firstPt = new THREE.Vector2(0, 0);
-      if (!params.anti) {
-        firstPt = new THREE.Vector2(0, 120);
-      }
-      points.push(firstPt.clone());
-      snowflake(
-        firstPt,
-        new THREE.Vector2(params.sideLength, 0),
-        params.iterations,
-        params.anti
-      );
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-
-      return new THREE.Line(geometry, material);
-    };
-
-    let flake = makeSnowflake(default_params);
+    // add koch snowflake to scene and render
     scene.add(flake);
     state.render();
-
-    function rebuild() {
-      scene.remove(flake);
-      flake = makeSnowflake(default_params);
-      scene.add(flake);
-      state.render();
-    }
   </script>
 </html>
