@@ -27,6 +27,10 @@ GPU. Unlike the previous exercises, where the specific object geometry and
 lighting was defined by using only `three.js`, we will instead define the
 objects and lighting within the scene using GLSL.
 
+As such, `raymarching.html` is complete and should require no alterations by
+you. You will be implementing functions within `sphere.glsl` instead. Check out
+the resources section to help you along the way.
+
 ## Resources
 
 [The Raymarching Algorithm](http://jamie-wong.com/2016/07/15/ray-marching-signed-distance-functions/#the-raymarching-algorithm)  
