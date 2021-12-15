@@ -39,16 +39,17 @@
     <h1>2D Sierpinski</h1>
   </body>
   <script>
+    // Feel free to change these numbers
     let default_params = {
       sideLength: 250,
-      iterations: 8,
+      iterations: 2,
     };
 
     var scene = new THREE.Scene();
 
     var renderer = new THREE.WebGLRenderer();
-    let points = [];
 
+    // Setting up three.js and the camera
     TW.mainInit(renderer, scene);
     let state = TW.cameraSetup(renderer, scene, {
       minx: -250,
@@ -90,63 +91,43 @@
         this.points.push(this._getPt());
       }
       l(deg) {
-        const newDir = this._getDir().rotateAround(
-          this._origin,
-          this.deg2rad(deg)
-        );
-        this._setDir(newDir);
-        return this;
+        // TODO: FILL IN THIS FUNCTION
+        // Turn the turtle deg degrees towards its left
       }
       r(deg) {
-        const newDir = this._getDir().rotateAround(
-          this._origin,
-          this.deg2rad(-deg)
-        );
-        this._setDir(newDir);
-        return this;
+        // TODO: FILL IN THIS FUNCTION
+        // Turn the turtle deg degrees towards its right
       }
       fwd(dist) {
-        this._scale(dist);
-        this._addPt();
-        return this;
+        // TODO: FILL IN THIS FUNCTION
+        // Move the turtle dist forwards and store the new point
+        // with the _addPt() helper function
       }
     }
 
-    const triangle = (tr, length) => {
-      for (let i = 0; i < 3; i++) {
-        tr.l(120).fwd(length);
-      }
-      return tr;
-    };
-
     const sierpinski = (tr, length, n) => {
-      if (n === 1) {
-        return triangle(tr, length);
-      }
-      tr = sierpinski(tr, length / 2, n - 1);
-      tr.l(120).fwd(length);
-
-      tr = sierpinski(tr, length / 2, n - 1);
-      tr.l(120).fwd(length);
-
-      tr = sierpinski(tr, length / 2, n - 1);
-      tr.l(120).fwd(length);
-      return tr;
+      // TODO: FILL IN THIS FUNCTION
+      // hint: you might need a helper function to help you construct a triangle
     };
 
     const makeSierpinski = (params) => {
+      // make the turtle line blue
       const material = new THREE.LineBasicMaterial({
         color: 0x0000ff,
       });
 
       const tr = new Turtle();
+
+      // Generate a sierpinski gasket
       sierpinski(tr, params.sideLength, params.iterations);
 
+      // Use list of points for each vertex to create a single line
       const geometry = new THREE.BufferGeometry().setFromPoints(tr.points);
 
       return new THREE.Line(geometry, material);
     };
 
+    // add scene with sierpinski gasket
     let sierp = makeSierpinski(default_params);
     scene.add(sierp);
     state.render();
