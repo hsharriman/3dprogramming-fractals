@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title></title>
+    <style>
+      head,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        display: block;
+        margin: 10px auto;
+        width: 800px;
+        height: 800px;
+      }
+    </style>
+    <script src="./two.js"></script>
+    <script src="https://cs.wellesley.edu/~cs307/threejs/libs/three-r95.all.js">
+      "https://cs.wellesley.edu/~cs307/threejs/libs/three-r80.min.js"
+    </script>
+    <script src="https://cs.wellesley.edu/~cs307/threejs/libs/tw-sp21.js">
+      "https://cs.wellesley.edu/~cs307/threejs/libs/tw-fa18.js"
+    </script>
+    <script src="https://cs.wellesley.edu/~cs307/threejs/libs/dat.gui-r95.js">
+      "https://cs.wellesley.edu/~cs307/threejs/libs/dat.gui.min.js"
+    </script>
+  </head>
+  <body>
+    <h1>Koch Snowflakes</h1>
+  </body>
+  <script>
+    let default_params = {
+      sideLength: 150,
+      iterations: 5,
+      anti: false,
+    };
+
+    var scene = new THREE.Scene();
+
+    var renderer = new THREE.WebGLRenderer();
+    let points = [];
+
+    TW.mainInit(renderer, scene);
+    let state = TW.cameraSetup(renderer, scene, {
+      minx: 0,
+      maxx: 150,
+      miny: 0,
+      maxy: 150,
+      minz: 0,
+      maxz: 0,
+    });
+
+    const left = (vec, deg) => {
+      const origin = new THREE.Vector2(0, 0);
+      return vec.clone().rotateAround(origin, (deg * Math.PI) / 180);
+    };
+
+    const right = (vec, deg) => {
+      const origin = new THREE.Vector2(0, 0);
+      return vec.clone().rotateAround(origin, (-deg * Math.PI) / 180);
+    };
+
+    const koch = (pt, moveTo, iterations) => {
+      if (iterations === 1) {
+        let newPt = moveTo.clone().add(pt).round();
+        points.push(newPt);
+        return newPt;
+      }
+      moveTo = moveTo.clone().divideScalar(3);
+      iterations--;
+      // move forwards
+      pt = koch(pt, moveTo, iterations);
+      // turn left 30 degrees and move forwards
+      moveTo = left(moveTo, 60);
+      pt = koch(pt, moveTo, iterations);
+      //turn right 60 degrees and move forwards
+      moveTo = right(moveTo, 120);
+      pt = koch(pt, moveTo, iterations);
+      // turn left 30 degrees and move forwards
+      moveTo = left(moveTo, 60);
+      pt = koch(pt, moveTo, iterations);
+      return pt;
+    };
+
+    const snowflake = (start, sideLen, iterations, anti) => {
+      let moveTo = sideLen;
+      let pt = start;
+      let sides = iterations <= 2 ? 3 : iterations; // make sure that the low-iterations are still closed polygons
+      for (let i = 0; i < sides; i++) {
+        pt = koch(pt, moveTo, iterations);
+        if (anti) {
+          moveTo = left(moveTo, 120);
+        } else {
+          moveTo = right(moveTo, 120);
+        }
+      }
+    };
+
+    const makeSnowflake = (params) => {
+      const material = new THREE.LineBasicMaterial({
+        color: 0x0000ff,
+      });
+
+      let firstPt = new THREE.Vector2(0, 0);
+      if (!params.anti) {
+        firstPt = new THREE.Vector2(0, 120);
+      }
+      points.push(firstPt.clone());
+      snowflake(
+        firstPt,
+        new THREE.Vector2(params.sideLength, 0),
+        params.iterations,
+        params.anti
+      );
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+      return new THREE.Line(geometry, material);
+    };
+
+    let flake = makeSnowflake(default_params);
+    scene.add(flake);
+    state.render();
+
+    function rebuild() {
+      scene.remove(flake);
+      flake = makeSnowflake(default_params);
+      scene.add(flake);
+      state.render();
+    }
+
+    // set up sliders to control the dimensions of the box
+    // var gui = new dat.GUI();
+    // gui.add(default_params, "sideLength", 50, 120).onChange(rebuild);
+    // gui.add(default_params, "iterations", 1, 7).onChange(rebuild);
+  </script>
+</html>
