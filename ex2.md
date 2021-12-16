@@ -1,9 +1,14 @@
 # Exercise 2: 2D Sierpinski Triangle
-Link to starter code: [link](https://github.com/hsharriman/3dprogramming-fractals/blob/main/exercises/ex2/sierpinski.html)
+
+Link to starter code:
+[link](https://github.com/hsharriman/3dprogramming-fractals/blob/main/exercises/ex2/sierpinski.html)
+
 ## Goal
 
 Render a 2D sierpinski gasket using `three.js`. Here is an example of what your
-finished product might look like: ![2D Sierpinski Gasket](img/2dsierpinski.png)
+finished product might look like:
+
+![2D Sierpinski Gasket](img/2dsierpinski.png)
 
 ## Instructions
 

@@ -1,6 +1,7 @@
 # Exercise 1: 2D Koch Snowflake
 
-Link to starter code: (link)[https://github.com/hsharriman/3dprogramming-fractals/blob/main/exercises/ex1/koch.html]
+Link to starter code:
+[link](https://github.com/hsharriman/3dprogramming-fractals/blob/main/exercises/ex1/koch.html)
 
 ## Instructions
 
