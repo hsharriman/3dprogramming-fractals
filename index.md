@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+# Fractals with three.js & Intro to Ray Marching
 
-You can use the [editor on GitHub](https://github.com/hsharriman/3dprogramming-fractals/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![3D Sierpinski Gasket](/img/3dsierpinski.png)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Introduction
 
-### Markdown
+This project is a Starter repository, providing some structured material to
+learn about generating fractals in 3D programming. This repo assumes that you're
+somewhat familiar with THREE.js and Javascript.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+There are 4 exercises included in this repository, which cover the topics:
 
-```markdown
-Syntax highlighted code block
+- **[Exercise 1](ex1)** Generating 2D Koch snowflakes using Turtle graphics (and
+  THREE.js)
+- **[Exercise 2](ex2)** Generating a 2D Sierpinski gasket with Turtle graphics
+  (and THREE.js)
+- **[Exercise 3](ex3)** Generating a 3D Sierpinski gasket by generating
+  tetrahedrons
+- **[Exercise 4](ex4)** Rendering a sphere using GLSL and raymarching
 
-# Header 1
-## Header 2
-### Header 3
+Additionally, there are resources for learning how to use raymarching to render
+fractals, which are listed below. It is recommended that you check out these
+resources after completing the provided exercises.
 
-- Bulleted
-- List
+## Resources
 
-1. Numbered
-2. List
+### Additional Raymarching Resources
 
-**Bold** and _Italic_ and `Code` text
+[Awesome Open Source Raymarching for THREE](https://awesomeopensource.com/project/nicoptere/raymarching-for-THREE)  
+[List of Signed Distance Estimators](https://iquilezles.org/www/articles/distfunctions/distfunctions.htm)
 
-[Link](url) and ![Image](src)
-```
+### Fractals and Raymarching Resources
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hsharriman/3dprogramming-fractals/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[Distance Estimated 3D Fractals Part I](http://blog.hvidtfeldts.net/index.php/2011/06/distance-estimated-3d-fractals-part-i/)  
+[Distance Estimated 3D Fractals Part III: Folding Space](http://blog.hvidtfeldts.net/index.php/2011/08/distance-estimated-3d-fractals-iii-folding-space/)  
+[Github Repo with Collection of 2D and 3D fractals implemented in GLSL](https://github.com/pedrotrschneider/shader-fractals)  
+[Mandelbulb Background and Some Implementation](https://iquilezles.org/www/articles/mandelbulb/mandelbulb.htm)  
+[Distance Estimated 3D Fractals Part V: The Mandelbulb Different DE Approximations](http://blog.hvidtfeldts.net/index.php/2011/09/distance-estimated-3d-fractals-v-the-mandelbulb-different-de-approximations/)
