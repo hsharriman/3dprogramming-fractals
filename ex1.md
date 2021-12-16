@@ -1,6 +1,6 @@
 # Exercise 1: 2D Koch Snowflake
 
-Link to starter code: [https://github.com/hsharriman/3dprogramming-fractals/blob/main/exercises/ex1/koch.html]
+Link to starter code: (link)[https://github.com/hsharriman/3dprogramming-fractals/blob/main/exercises/ex1/koch.html]
 
 ## Instructions
 
@@ -26,11 +26,11 @@ to use `THREE.Vector2.clone()` any time you rotate, scale, or shift a `Vector2`.
 
 ### 2D Koch Snowflake
 
-![2D Koch Snowflake](/img/koch.png)
+![2D Koch Snowflake](img/koch.png)
 
 ### 2D Koch Anti-Snowflake
 
-![2D AntiSnowflake](/img/antikoch.png)
+![2D AntiSnowflake](img/antikoch.png)
 
 ## Resources
 
