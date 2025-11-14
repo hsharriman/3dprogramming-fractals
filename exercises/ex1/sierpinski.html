@@ -90,19 +90,7 @@
         this._setPt(this._getPt().add(this._getDir()));
         this.points.push(this._getPt());
       }
-      l(deg) {
-        // TODO: FILL IN THIS FUNCTION
-        // Turn the turtle deg degrees towards its left
-      }
-      r(deg) {
-        // TODO: FILL IN THIS FUNCTION
-        // Turn the turtle deg degrees towards its right
-      }
-      fwd(dist) {
-        // TODO: FILL IN THIS FUNCTION
-        // Move the turtle dist forwards and store the new point
-        // with the _addPt() helper function
-      }
+      // TODO: FILL IN with your turn and move functions
     }
 
     const sierpinski = (tr, length, n) => {
@@ -139,7 +127,7 @@
       state.render();
     }
 
-    // set up sliders to control the dimensions of the box
+    // set up sliders to control the depth of the fractal
     var gui = new dat.GUI();
     gui.add(default_params, "iterations", 1, 8).onChange(rebuild);
   </script>

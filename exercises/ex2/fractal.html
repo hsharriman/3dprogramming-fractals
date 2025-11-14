@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title></title>
+    <style>
+      head,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        display: block;
+        margin: 10px auto;
+        width: 800px;
+        height: 800px;
+      }
+    </style>
+    <script src="https://cs.wellesley.edu/~cs307/threejs/libs/three-r95.all.js">
+      "https://cs.wellesley.edu/~cs307/threejs/libs/three-r80.min.js"
+    </script>
+    <script src="https://cs.wellesley.edu/~cs307/threejs/libs/tw-sp21.js">
+      "https://cs.wellesley.edu/~cs307/threejs/libs/tw-fa18.js"
+    </script>
+    <script src="https://cs.wellesley.edu/~cs307/threejs/libs/dat.gui-r95.js">
+      "https://cs.wellesley.edu/~cs307/threejs/libs/dat.gui.min.js"
+    </script>
+  </head>
+  <body>
+    <h1>Fractal HW</h1>
+  </body>
+  <script>
+    // Feel free to change these numbers
+    let default_params = {
+      sideLength: 250, // length of one side of the largest triangle
+      iterations: 2, // recursive depth
+    };
+
+    var scene = new THREE.Scene();
+
+    var renderer = new THREE.WebGLRenderer();
+
+    // Setting up three.js and the camera
+    TW.mainInit(renderer, scene);
+    let state = TW.cameraSetup(renderer, scene, {
+      minx: -250,
+      maxx: 0,
+      miny: 0,
+      maxy: 150,
+      minz: 0,
+      maxz: 0,
+    });
+
+    // COPY your turtle class from ex1 here!
+
+    // WRITE your recursive fractal logic here
+
+    const makeFractal = (params) => {
+      // make the turtle line blue
+      const material = new THREE.LineBasicMaterial({
+        color: 0x0000ff,
+      });
+
+      const tr = new Turtle();
+
+      // TODO: call your recursive function to draw the fractal here
+      // make sure pass in tr (the turtle) to your function
+
+      // Use list of points for each vertex to create a single line
+      const geometry = new THREE.BufferGeometry().setFromPoints(tr.points);
+
+      return new THREE.Line(geometry, material);
+    };
+
+    // add scene
+    let sierp = makeSierpinski(default_params);
+    scene.add(sierp);
+    state.render();
+
+    function rebuild() {
+      scene.remove(sierp);
+      sierp = makeSierpinski(default_params);
+      scene.add(sierp);
+      state.render();
+    }
+
+    // set up sliders to control the depth of the fractal
+    var gui = new dat.GUI();
+    gui.add(default_params, "iterations", 1, 8).onChange(rebuild);
+  </script>
+</html>

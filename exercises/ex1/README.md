@@ -1,36 +1,17 @@
-# Exercise 1: 2D Koch Snowflake
-
-## Instructions
-
-Render a Koch snowflake using turtle graphics concepts. You should be able to
-change one variable and reload the page to update the recursion depth of the
-triangle. You should also be able to create a Koch antisnowflake by setting one
-variable from `true` to `false`. (Hint: an antisnowflake is almost the same as a
-regular Koch snowflake. At the highest level, turn the opposite direction so
-that the fractal pattern is constructed towards the center of the snowflake
-instead of away!)
-
-If you are unfamiliar with the concepts of turtle graphics, check out the
-resources section to learn more about them! You will need to implement the logic
-in the `left` and `right` functions, as well as implement the recursive `koch`
-function to complete this exercise.
-
-**NOTE**: The starter code makes use of `THREE.Vector2`. You will be calling
-methods from these vectors. Remember that they are class instances. Since we
-want to keep track of all the previous points that our turtle visits, make sure
-to use `THREE.Vector2.clone()` any time you rotate, scale, or shift a `Vector2`.
+# Exercise 1: 2D Sierpinski Triangle
 
 ## Goal
 
-### 2D Koch Snowflake
+Render a 2D sierpinski gasket using `three.js`. Here is an example of what your
+finished product might look like: ![2D Sierpinski Gasket](/img/2dsierpinski.png)
 
-![2D Koch Snowflake](/img/koch.png)
+## Instructions
 
-### 2D Koch Anti-Snowflake
+Fill in the missing functions in the starter code provided in `sierpinski.html`.
+You should be able to adjust the recursion depth of the gasket by using the provided slider without reloading the page. You will need to implement the `move` and `turn` methods within the turtle graphics class as well to be able to appropriately render your Sierpinski Gasket.
 
-![2D AntiSnowflake](/img/antikoch.png)
+## Additional Resources
 
-## Resources
-
-[Wikipedia Koch Snowflake Including Antisnowflakes](https://en.wikipedia.org/wiki/Koch_snowflake)  
-[Creating Koch Snowflakes with Turtle](https://benedictxneo.medium.com/koch-snowflake-using-python-turtle-5b9ff5f42572)
+Check out these resources if you get stuck or need a place to start:  
+[Wikipedia Sierpinski Triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle)  
+[Mathigon: Sierpinski](https://mathigon.org/course/fractals/sierpinski)
