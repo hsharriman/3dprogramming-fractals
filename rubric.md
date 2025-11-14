@@ -7,10 +7,6 @@
 
 This homework is designed for students with some programming experience. The assignment would be one exercise within a set for an introductory "Computer Graphics" course taught in Javascript. Students will have already onboarded to three.js, have used similar starter code, git, and familiarized themselves with running javascript code in the browser using basic HTML and `<script></script>` tags. Before this particular assignment, students will have attended a lecture about turtle graphics and a refresher on recursion.
 
-INTRODUCTION TO GIVE IN CLASS:
-
-- This assignment will apply the concepts that we have covered today in lecture including turtle graphics, vector spaces, and recursion. You will be writing your own implementation of a turtle using THREE.js and use it to create fractals.
-
 ### Why I am choosing this assignment
 
 I intentionally designed the homework assignment and grading rubric based on the learning goals which I believe fit into a larger curriculum of 3D graphics. This assignment asks students to build a simple turtle-graphics system in THREE.js and use it to generate fractals. My goal for this assignment is to have students apply core 3D programming concepts based on information covered in lecture and a learning-by-doing approach. Turtle graphics are being used because I want students to develop their understanding of coordinate systems, orientation, and recursion. I believe this will help build stronger mental models when they start working in 3d coordinate spaces and see immediate visual feedback from their code.
