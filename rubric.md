@@ -1,7 +1,7 @@
 ## Learning Goals for the assignment
 
-- students will be able to write their own turtle graphics behavior using THREE.js and javascript.
-- students will be able to create fractals using turtle graphics and recursion.
+- students will be able to implement their own turtle graphics behavior using THREE.js and javascript.
+- students will be able to create different fractals using turtle graphics and recursion.
 
 ## Assumptions for CS Pedagogy Assignment
 
