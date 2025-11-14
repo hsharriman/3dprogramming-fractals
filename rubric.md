@@ -48,6 +48,4 @@ _Write custom turtle-graphics behavior in JavaScript & Three.js_
 Submit the following:
 
 - `.html` files pushed to your fork of the class repository. Include a link to your deployed Github Pages for the assignment and a link to your source code.
-- Writeup step: Which fractal did you choose? For the fractal of your choosing, describe the recursive step and the base step that the turtle makes.
-
 ---
