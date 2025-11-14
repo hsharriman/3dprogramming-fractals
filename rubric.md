@@ -1,4 +1,4 @@
-NEW LEARNING GOALS: 3D Programming with ThreeJS
+## Learning Goals for the assignment
 
 - students will be able to write their own turtle graphics behavior using THREE.js and javascript.
 - students will be able to create fractals using turtle graphics and recursion.
