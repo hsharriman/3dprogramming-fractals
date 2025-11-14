@@ -13,4 +13,4 @@ Render a 2D fractal using `three.js`. You may choose a fractal from the followin
 ## Instructions
 
 Fill in the missing functions in the starter code provided in `fractal.html`.
-You should be able to adjust the recursion depth by adjusting one variable and reloading the webpage. You may copy/paste your turtle graphics class from exercise 1 into `fractal.html` to get started.
+You should be able to adjust the recursion depth by using the provided slider on the webpage within the browser, without refreshing the page. You may copy/paste your turtle graphics class from exercise 1 into `fractal.html` to get started.
